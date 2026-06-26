@@ -1,0 +1,27 @@
+﻿<Page x:Class="MentorApp.MeetingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="#ECF0F1">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Мои встречи" FontSize="22" FontWeight="Bold" 
+                   Foreground="#2C3E50" Margin="0,0,0,10"/>
+
+        <DataGrid x:Name="dgMeetings" Grid.Row="1" AutoGenerateColumns="False"
+                  IsReadOnly="True" CanUserAddRows="False" FontSize="13"
+                  PreviewMouseRightButtonDown="DgMeetings_PreviewMouseRightButtonDown">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding MeetingID}" Width="50"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding MeetingDate, StringFormat=dd.MM.yyyy HH:mm}" Width="150"/>
+                <DataGridTextColumn Header="Тема" Binding="{Binding Topic}" Width="300"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="150"/>
+                <DataGridTextColumn Header="Ментор" Binding="{Binding Application.Mentor.User.FullName}" Width="180"/>
+                <DataGridTextColumn Header="Менти" Binding="{Binding Application.Mentee.User.FullName}" Width="180"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
